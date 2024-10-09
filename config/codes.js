@@ -18,5 +18,6 @@ export const Codes = {
     GRX0017:"Access and refresh tokens dont belong to same user!",
     GRX0018:"All admins fetched successfully!",
     GRX0019:"Admins fetch unsuccessful!",
-    GRX0020:"Sorry,no admins created yet!"
+    GRX0020:"Sorry,no admins created yet!",
+    GRX0021:"Too many requests from this IP, please try again after 15 minutes."
 };
