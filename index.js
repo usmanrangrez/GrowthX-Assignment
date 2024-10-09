@@ -46,7 +46,7 @@ class AppServer {
   }
 
   setupRoutes() {
-    this.app.use("/api", router);
+    this.app.use("/api/v1", router);
   }
 
   startServer() {

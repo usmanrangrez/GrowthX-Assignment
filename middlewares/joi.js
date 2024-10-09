@@ -17,6 +17,7 @@ const loginSchema = Joi.object({
     password: Joi.string().min(8).required(),
 });
 
+
 export const validateRegister = (req, res, next) => {
     const { error } = registerSchema.validate(req.body);
     
@@ -36,3 +37,4 @@ export const validateLogin = (req, res, next) => {
 
     next();
 };
+
