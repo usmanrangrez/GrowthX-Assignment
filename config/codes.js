@@ -1,1 +1,19 @@
-export const Codes = {};
+export const Codes = {
+    GRX0001:"User registered successfully!",
+    GRX0002:"User registration failed!",
+    GRX0003:"User already registered in the system!",
+    GRX0004:"User logged in successfully!",
+    GRX0005:"User login failed!",
+    GRX0006:"No user found!",
+    GRX0007:"Password mmismatch!",
+    GRX0008:"Refresh token not found in headers!",
+    GRX0009:"Token is blacklisted!",
+    GRX0010:"Tokens refreshed successfully!",
+    GRX0011:"Tokens refresh failure!",
+    GRX0012:"User logout success!",
+    GRX0013:"User logout failed!",
+    GRX0014:"Please provide both tokens!",
+    GRX0015:"Token verification failed!",
+    GRX0016:"Token generation failed!",
+    GRX0017:"Access and refresh tokens dont belong to same user!",
+};

@@ -27,7 +27,6 @@ class MongoConnection {
     }
 
     try {
-      console.log("this", this.mongoConfig.uri);
       this.connection = await mongoose.connect(this.mongoConfig.uri);
       logger.info(
         `Connected to MongoDB successfully ${this.connection?.connections[0]?.host}`
