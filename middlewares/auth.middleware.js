@@ -1,13 +1,14 @@
 import jwt from 'jsonwebtoken';
+import { Codes } from '../config/codes.js';
 
 const verifyToken = (req, res, next) => {
-    const token = req.headers['authorization']?.split(' ')[1];
+    const accessToken = req.headers['authorization']?.split(' ')[1];
 
-    if (!token) {
-        return res.status(403).json({ message: 'A token is required for authentication' });
+    if (!accessToken) {
+        return res.status(403).json({ message: Codes.GRX0026 });
     }
     try {
-        const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_KEY);
+        const decoded = jwt.verify(accessToken, process.env.ACCESS_TOKEN_KEY);
         req.user = decoded;
     } catch (err) {
         return res.status(401).json({ message: 'Invalid Token' });
@@ -15,15 +16,24 @@ const verifyToken = (req, res, next) => {
     return next();
 };
 
-const verifyRole = (roles) => {
+const verifyAdminOnly = (adminRole) => {
     return (req, res, next) => {
-        if (!req.user || !roles.includes(req.user.role)) {
-            return res.status(403).json({ message: 'Access denied: insufficient permissions' });
+        if (!req.user || req.user.role !== adminRole) {
+            return res.status(403).json({ message: Codes.GRX0028 });
         }
-        next(); 
+        next();
+    };
+};
+
+const verifyUserOnly = (userRole) => {
+    return (req, res, next) => {
+        if (!req.user || req.user.role !== userRole) {
+            return res.status(403).json({ message: Codes.GRX0027 });
+        }
+        next();
     };
 };
 
 
 
-export { verifyRole, verifyToken };
+export { verifyAdminOnly, verifyUserOnly, verifyToken };

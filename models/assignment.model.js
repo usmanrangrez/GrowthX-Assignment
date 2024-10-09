@@ -1,24 +1,36 @@
 import mongoose from 'mongoose';
+import constants from '../config/constants.js';
 const { Schema } = mongoose;
 
 const assignmentSchema = new Schema({
-  username: {
+  user: {
     type: String,
     required: true,
   },
-  password: {
+  admin: {
     type: String,
     required: true,
   },
-  email: {
+  title: {
     type: String,
     required: true,
-    unique:true
   },
-  role: {
+  task: {
     type: String,
-    enum: ['admin', 'user'],
-    default: 'user' 
+    required: true,
+  },
+  description: {
+    type: String,
+    required: true,
+  },
+  status: {
+    type: String,
+    enum: [constants.pending, constants.rejected, constants.accepted], 
+    default: constants.pending
+  },
+  filePath: {
+    type: String,
+    required: true
   }
 }, {
   timestamps: true
