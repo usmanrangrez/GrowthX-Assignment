@@ -11,4 +11,5 @@ const userController = new UserController();
 router.get("/admins", userController.fetchAllAdmins);
 router.post("/upload", verifyToken, verifyUserOnly(constants.user), upload(constants.file), validateUploadAssignment, userController.uploadAssignment);
 
+
 export default router;

@@ -38,7 +38,6 @@ class UserService {
                 throw new Error(Codes.GRX0035)
             }
             const admin = await this.user.findOne({ username: adminName });
-
             if (!admin) {
                 throw new Error(Codes.GRX0036)
             }

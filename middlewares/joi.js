@@ -23,6 +23,10 @@ const uploadAssignmentSchema = Joi.object({
     task: Joi.string().required(),
 });
 
+const updateAssignmentSchema = Joi.object({
+    status: Joi.string().required(),
+});
+
 
 
 export const validateRegister = (req, res, next) => {
@@ -45,6 +49,16 @@ export const validateLogin = (req, res, next) => {
     next();
 };
 
+
+export const validateUpdateassignment = (req, res, next) => {
+    const { error } = updateAssignmentSchema.validate(req.body);
+    
+    if (error) {
+        return res.status(400).json({ error: error.details[0].message });
+    }
+
+    next();
+};
 
 export const validateUploadAssignment = (req, res, next) => {
     const { error } = uploadAssignmentSchema.validate(req.body);

@@ -118,6 +118,8 @@ dist
 .pnp.*
 
 #uploads
-uploads
+.uploads
+
+
 
 # End of https://mrkandreev.name/snippets/gitignore-generator/#Node
