@@ -58,13 +58,13 @@ npm start or npm run dev
 
 ### 5. Libraries used
 ```bash
-bcrypt		            Password hashing
-dotenv		            Environment variable management
+bcrypt		              Password hashing
+dotenv		              Environment variable management
 express	                Web framework
-express-rate-limit		API rate limiting
-ioredis		            Redis client
-joi		                Data validation
-jsonwebtoken		    JWT-based authentication
+express-rate-limit		  API rate limiting
+ioredis		              Redis client
+joi		                  Data validation
+jsonwebtoken		        JWT-based authentication
 mongooseMongoDB         ODM
 multer                  File upload middleware
 winston	                Logging library
