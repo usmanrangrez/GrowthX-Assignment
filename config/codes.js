@@ -30,10 +30,19 @@ export const Codes = {
     GRX0029:"User information is missing,please check token details!",
     GRX0030:"No username associated with these credentials,please contact admin!",
     GRX0031:"All assignments fetched successfully!",
-    GRX0032:"An error occured during fetching assignments!",
+    GRX0032:"An error occured during fetching assignment/assignments!",
     GRX0033:"No username present in DB with this token!",
     GRX0034:"The admin you are choosing has not been assigned admin role!",
     GRX0035:"An admin is not allowed to upload an assignment!",
     GRX0036:"No data present in DB with this adminName!",
+    GRX0037:"Invalid status. Must be 'accepted' or 'rejected.",
+    GRX0038:"Assignment updated successfully.",
+    GRX0039:"Assignment not found.",
+    GRX0040:"Admin not found.",
+    GRX0041:"You are not authorized to change/view  as this assignment is not alloted to you.",
+    GRX0042:"An error occured during updating assignment!",
+    GRX0043:"File not found.",
+    GRX0044:"Assignment fetched successfully.",
+
 
 };

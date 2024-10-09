@@ -5,6 +5,7 @@ const constants = {
   true:"true",
   refreshTokenHeaderKey:'x-refresh-token',
   uploadsFolder:'../uploads',
+  getFolder:'./uploads',
   allowedFileType:['application/pdf'],
   rootPath:'.',
   file:'file',
