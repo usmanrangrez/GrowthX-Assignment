@@ -5,6 +5,8 @@ import RedisClient from "./integrations/redis.js";
 import MongoConnection from "./integrations/database.js";
 import rateLimitter from "./integrations/rateLimiter.js";
 import router from "./routes/index.js";
+import helmet from "helmet";
+import hpp from "hpp";
 
 const logger = new Logger();
 
@@ -22,6 +24,8 @@ class AppServer {
   }
 
   setupMiddlewares() {
+    this.app.use(helmet()); 
+    this.app.use(hpp());
     this.app.use(express.json());
     this.app.use(express.urlencoded({ extended: true }));
     this.app.use(rateLimitter);
