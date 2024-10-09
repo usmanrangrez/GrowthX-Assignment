@@ -1,11 +1,10 @@
 import mongoose from 'mongoose';
 const { Schema } = mongoose;
 
-const userSchema = new Schema({
+const assignmentSchema = new Schema({
   username: {
     type: String,
     required: true,
-    unique:true
   },
   password: {
     type: String,
@@ -25,6 +24,6 @@ const userSchema = new Schema({
   timestamps: true
 });
 
-const User = mongoose.model('User', userSchema);
+const Assignment = mongoose.model('Assignment', assignmentSchema);
 
-export default User;
+export default Assignment;

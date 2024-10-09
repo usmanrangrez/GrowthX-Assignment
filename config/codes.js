@@ -16,4 +16,7 @@ export const Codes = {
     GRX0015:"Token verification failed!",
     GRX0016:"Token generation failed!",
     GRX0017:"Access and refresh tokens dont belong to same user!",
+    GRX0018:"All admins fetched successfully!",
+    GRX0019:"Admins fetch unsuccessful!",
+    GRX0020:"Sorry,no admins created yet!"
 };
