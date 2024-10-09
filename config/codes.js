@@ -19,5 +19,21 @@ export const Codes = {
     GRX0018:"All admins fetched successfully!",
     GRX0019:"Admins fetch unsuccessful!",
     GRX0020:"Sorry,no admins created yet!",
-    GRX0021:"Too many requests from this IP, please try again after 15 minutes."
+    GRX0021:"Too many requests from this IP, please try again after 15 minutes.",
+    GRX0022:"Assignment uploaded successfully!",
+    GRX0023:"Assignment upload failure!",
+    GRX0024:'Invalid file type. Only PDF are allowed.',
+    GRX0025:'No file uploaded,please upload an assignment also!',
+    GRX0026:'No token found!',
+    GRX0027:"Access denied: Please use user role to upload assignments and verify token is provided!",
+    GRX0028:"Access denied: Please use admin role to accept/reject assignments and verify token is provided!",
+    GRX0029:"User information is missing,please check token details!",
+    GRX0030:"No username associated with these credentials,please contact admin!",
+    GRX0031:"All assignments fetched successfully!",
+    GRX0032:"An error occured during fetching assignments!",
+    GRX0033:"No username present in DB with this token!",
+    GRX0034:"The admin you are choosing has not been assigned admin role!",
+    GRX0035:"An admin is not allowed to upload an assignment!",
+    GRX0036:"No data present in DB with this adminName!",
+
 };

@@ -1,4 +1,3 @@
-// middlewares/validationSchemas.js
 import Joi from 'joi';
 
 const registerSchema = Joi.object({
@@ -16,6 +15,14 @@ const loginSchema = Joi.object({
     email: Joi.string().email().required(),
     password: Joi.string().min(8).required(),
 });
+
+const uploadAssignmentSchema = Joi.object({
+    title: Joi.string().required(),
+    description: Joi.string().required(),
+    admin: Joi.string().required(),
+    task: Joi.string().required(),
+});
+
 
 
 export const validateRegister = (req, res, next) => {
@@ -38,3 +45,13 @@ export const validateLogin = (req, res, next) => {
     next();
 };
 
+
+export const validateUploadAssignment = (req, res, next) => {
+    const { error } = uploadAssignmentSchema.validate(req.body);
+    
+    if (error) {
+        return res.status(400).json({ error: error.details[0].message });
+    }
+
+    next();
+};
