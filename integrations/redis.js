@@ -46,6 +46,14 @@ class RedisClient {
       process.exit(1);
     }
   }
+
+  async get(key) {
+    return this.client.get(key); 
+  }
+
+  async setex(key, seconds, value) {
+    return this.client.setex(key, seconds, value); 
+  }
 }
 
 export default RedisClient;
