@@ -22,10 +22,8 @@ const storage = multer.diskStorage({
         cb(null, uploadPath);
     },
     filename: (req, file, cb) => {
-        const { admin } = req.body;
-        const randomUUID = crypto.randomUUID();
-        const customFileName = `${admin}_${randomUUID}${path.extname(file.originalname)}`;
-        cb(null, customFileName);
+        // We'll set the filename later, after all fields are processed
+        cb(null, file.originalname);
     },
 });
 
@@ -44,17 +42,28 @@ const upload = multer({
     fileFilter: fileFilter
 });
 
-export default (fieldName) => [
+export default () => [
     (req, res, next) => {
         ensureUploadDirExists();
-        upload.single(fieldName)(req, res, async (err) => {
+        upload.single(constants.file)(req, res, async (err) => {
             if (err instanceof multer.MulterError) {
                 return res.status(400).json({ error: err.message });
             } else if (err) {
                 return res.status(500).json({ error: err.message });
             }
 
-            const { admin } = req.body;
+            const { admin, title, task, description } = req.body;
+
+            if (!admin || !title || !task || !description) {
+                if (req.file) {
+                    fs.unlinkSync(req.file.path);
+                }
+                return res.status(400).json({
+                    message: Codes.GRX0023,
+                    error: "Missing required fields"
+                });
+            }
+
             try {
                 const isAdminExist = await User.findOne({username: admin});
                 if (!isAdminExist) {
@@ -66,13 +75,23 @@ export default (fieldName) => [
                         error: Codes.GRX0036
                     });
                 }
+
+                if (req.file) {
+                    const randomUUID = crypto.randomUUID();
+                    const newFilename = `${admin}_${randomUUID}${path.extname(req.file.originalname)}`;
+                    const newPath = path.join(path.dirname(req.file.path), newFilename);
+                    fs.renameSync(req.file.path, newPath);
+                    req.file.path = newPath;
+                    req.file.filename = newFilename;
+                }
+
                 next();
             } catch (error) {
                 if (req.file) {
                     fs.unlinkSync(req.file.path);
                 }
                 return res.status(500).json({
-                    message:Codes.GRX0023,
+                    message: Codes.GRX0023,
                     error: error.message
                 });
             }
